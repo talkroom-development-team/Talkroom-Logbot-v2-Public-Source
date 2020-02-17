@@ -38,6 +38,23 @@ client.on("guildMemberAdd", member => {
     }
 });
 
+client.on("guildBanAdd", member => {
+    try {
+        const server = client.guild.get("481430756514856980");
+        const channels = client.channels.get("599190322999721994");
+        let embed = new Discord.RichEmbed()
+            .setTitle("유저 차단")
+            .setDescription(member.user.username + "님이 차단되었습니다.")
+            .setColor("#0000ff")
+            .addField("차단 대상", member.user.tag)
+            .setFooter("Talkroom Logger", "https://cdn.discordapp.com/attachments/592986484332691456/598063057230495753/image0.png")
+        member.user.send("차단되었습니다.")
+        channel.send(embed);
+    } catch (error) {
+
+    }
+});
+
 client.on("messageDelete", msg => {
     try {
         const channel = client.channels.get("599190322999721994");
